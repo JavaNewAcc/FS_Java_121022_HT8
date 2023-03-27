@@ -5,7 +5,7 @@ import java.io.File;
 public class TaskThree {
 
 	public static void main(String[] args) {
-		printFolderNames("/Canada 2023");
+		printFolderNames(".");
 	}
 
 	public static void printFolderNames(String folderName) {
