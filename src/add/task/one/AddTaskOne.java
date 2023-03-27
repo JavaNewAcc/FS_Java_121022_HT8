@@ -1,7 +1,6 @@
 package add.task.one;
 
 import java.util.Scanner;
-import java.util.Arrays;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -11,23 +10,12 @@ public class AddTaskOne {
 		String text;
 		char[] charArr = charArrayFiller('a', 'z');
 		int[] counterArr = new int[charArr.length];
-
-//		System.out.println(Arrays.toString(charArr));
-//		System.out.println(Arrays.toString(counterArr));
-
 		System.out.println("Введіть текст для підрахунку кількості повторів кожної літери та натисніть Enter:");
 		Scanner scan = new Scanner(System.in);
 		text = scan.nextLine();
 		letterCounter(charArr, counterArr, text);
-
-//		System.out.println(Arrays.toString(charArr));
-//		System.out.println(Arrays.toString(counterArr));
-
 		arraySorter(charArr, counterArr);
-
-//		System.out.println(Arrays.toString(charArr));
-//		System.out.println(Arrays.toString(counterArr));
-		resultPrinter(charArr, counterArr);
+		printToFile(charArr, counterArr, "Results.txt");
 	}
 
 	public static char[] charArrayFiller(char firstChar, char lastChar) {
@@ -69,8 +57,8 @@ public class AddTaskOne {
 		}
 	}
 
-	public static void resultPrinter(char[] charArr, int[] counterArr) {
-		try (PrintWriter pw = new PrintWriter("results.txt");) {
+	public static void printToFile(char[] charArr, int[] counterArr, String fileName) {
+		try (PrintWriter pw = new PrintWriter(fileName);) {
 			pw.println("Буква: кількість повторів");
 			for (int i = 0; i < charArr.length; i++) {
 				if (counterArr[i] > 0) {
